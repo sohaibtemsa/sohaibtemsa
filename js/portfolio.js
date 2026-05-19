@@ -1,8 +1,13 @@
 (function () {
   "use strict";
 
-  var yearEl = document.getElementById("year");
-  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+  if (window.PortfolioTheme) {
+    window.PortfolioTheme.init();
+  }
+
+  if (window.PortfolioI18n) {
+    window.PortfolioI18n.init();
+  }
 
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("nav-menu");

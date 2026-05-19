@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <script>
+    (function () {
+      var k = "portfolio-theme";
+      var t;
+      try { t = localStorage.getItem(k); } catch (e) {}
+      if (t !== "light" && t !== "dark") {
+        t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      }
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portfolio de TEMSAMANI Sohaib — Ingénieur IA, Computer Vision. ENSA, expériences Marwa, OCP, Mentis.">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#0a0a0a" id="meta-theme-color">
   <title>Sohaib Temsamani | Ingénieur IA</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,80 +23,104 @@
   <link rel="stylesheet" href="css/portfolio.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Aller au contenu</a>
+  <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
 
   <header class="site-header">
-    <nav class="nav container" aria-label="Principal">
-      <a class="logo" href="#home" aria-label="Accueil">ST</a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="sr-only">Menu</span>
-      </button>
+    <nav class="nav container" data-i18n-aria="aria.nav">
+      <a class="logo" href="#home" data-i18n-aria="aria.home">ST</a>
+
       <ul class="nav-links" id="nav-menu">
-        <li><a href="#home">Accueil</a></li>
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#parcours">Parcours</a></li>
-        <li><a href="#skills">Compétences</a></li>
-        <li><a href="#projects">Projets</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#home" data-i18n="nav.home">Accueil</a></li>
+        <li><a href="#about" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#parcours" data-i18n="nav.parcours">Parcours</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+        <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
       </ul>
+
+      <div class="nav-controls">
+        <div class="nav-prefs">
+          <div class="theme-switch" role="group" data-i18n-aria="aria.theme">
+            <button type="button" class="theme-btn is-active" data-theme-value="dark" data-i18n-aria="theme.dark" aria-pressed="true">
+              <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+              </svg>
+            </button>
+            <button type="button" class="theme-btn" data-theme-value="light" data-i18n-aria="theme.light" aria-pressed="false">
+              <svg class="theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+              </svg>
+            </button>
+          </div>
+          <div class="lang-switch" role="group" data-i18n-aria="aria.lang">
+            <button type="button" class="lang-btn is-active" data-lang="fr" aria-pressed="true">FR</button>
+            <span class="lang-sep" aria-hidden="true">/</span>
+            <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+          </div>
+        </div>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="sr-only" data-i18n="aria.menu">Menu</span>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main id="main">
     <section class="hero container" id="home">
       <div class="hero-content reveal">
-        <h1>Bonjour, je suis <span class="accent">Sohaib Temsamani</span></h1>
+        <h1 data-i18n-html="hero.title">Bonjour, je suis <span class="accent">Sohaib Temsamani</span></h1>
         <p class="hero-status">
           <span class="hero-status-dot" aria-hidden="true"></span>
-          <span>Ingénieur IA</span>
+          <span data-i18n="hero.status.ai">Ingénieur IA</span>
           <span class="hero-status-sep" aria-hidden="true">·</span>
           <span class="hero-status-highlight">Computer Vision</span>
           <span class="hero-status-sep" aria-hidden="true">·</span>
-          <span class="hero-status-highlight">Agents IA</span>
+          <span class="hero-status-highlight" data-i18n="hero.status.agents">Agents IA</span>
         </p>
-        <p class="hero-lead">
+        <p class="hero-lead" data-i18n-html="hero.lead">
           Pipelines CV temps réel et agents IA chez <strong>Marwa</strong>.
           Diplômé ENSA en transformation digitale industrielle.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="cv/CV_TEMSAMANI_Sohaib.pdf" download>Télécharger le CV</a>
-          <a class="btn btn-ghost" href="#projects">Voir les projets</a>
-          <a class="btn btn-ghost" href="#contact">Me contacter</a>
+          <a class="btn btn-primary" href="cv/CV_TEMSAMANI_Sohaib.pdf" download data-i18n="hero.cv">Télécharger le CV</a>
+          <a class="btn btn-ghost" href="#projects" data-i18n="hero.projects">Voir les projets</a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="hero.contact">Me contacter</a>
         </div>
         <ul class="hero-meta">
-          <li>Casablanca, Maroc</li>
+          <li data-i18n="hero.location">Casablanca, Maroc</li>
           <li>Marwa</li>
         </ul>
       </div>
       <div class="hero-visual reveal" style="--delay: 0.1s">
         <div class="hero-frame">
-          <img src="images/sohaib.jpg" alt="Portrait de Sohaib Temsamani" width="480" height="480" loading="eager" decoding="async">
+          <img src="images/sohaib.jpg" alt="Portrait de Sohaib Temsamani" data-i18n-alt="hero.imgAlt" width="480" height="480" loading="eager" decoding="async">
         </div>
       </div>
     </section>
 
     <section class="section about-section" id="about">
       <div class="container">
-        <span class="section-tag reveal">À propos</span>
+        <span class="section-tag reveal" data-i18n="about.tag">À propos</span>
 
         <div class="about-layout">
           <aside class="about-sidebar reveal">
             <div class="about-profile-card">
               <img src="images/sohaib.jpg" alt="Sohaib Temsamani" width="140" height="140" loading="lazy" decoding="async">
               <p class="profile-name">Sohaib Temsamani</p>
-              <p class="profile-role">Ingénieur IA · Computer Vision</p>
-              <p class="profile-location">Casablanca, Maroc</p>
-              <a class="btn btn-primary btn-block profile-cv" href="cv/CV_TEMSAMANI_Sohaib.pdf" download>Télécharger le CV</a>
+              <p class="profile-role" data-i18n="about.role">Ingénieur IA · Computer Vision</p>
+              <p class="profile-location" data-i18n="hero.location">Casablanca, Maroc</p>
+              <a class="btn btn-primary btn-block profile-cv" href="cv/CV_TEMSAMANI_Sohaib.pdf" download data-i18n="hero.cv">Télécharger le CV</a>
             </div>
           </aside>
 
           <div class="about-content reveal" style="--delay: 0.06s">
-            <p class="about-lead">
+            <p class="about-lead" data-i18n-html="about.lead">
               Je suis <strong>TEMSAMANI Sohaib</strong>, ingénieur IA basé à
               <strong>Casablanca</strong>, diplômé ENSA en transformation digitale industrielle.
             </p>
-            <p>
+            <p data-i18n-html="about.p1">
               Aujourd'hui chez <strong>Marwa</strong>, je développe des pipelines computer vision temps réel
               (YOLO, détection, tracking, Re-ID multi-caméras), des agents IA basés sur LLM (RAG, STT/TTS)
               et des architectures data en flux (Kafka, EMQX, MQTT).
@@ -94,13 +129,13 @@
             <div class="about-highlights">
               <article class="highlight-card reveal" style="--delay: 0.05s">
                 <span class="highlight-icon" aria-hidden="true">MW</span>
-                <h3>Marwa · CDI</h3>
-                <p>IA &amp; computer vision — pipelines temps réel et agents LLM.</p>
+                <h3 data-i18n="about.h.marwa.t">Marwa · CDI</h3>
+                <p data-i18n="about.h.marwa.p">IA &amp; computer vision — pipelines temps réel et agents LLM.</p>
               </article>
               <article class="highlight-card reveal" style="--delay: 0.1s">
                 <span class="highlight-icon" aria-hidden="true">EN</span>
-                <h3>ENSA · TDI</h3>
-                <p>Transformation digitale industrielle — ingénieur.</p>
+                <h3 data-i18n="about.h.ensa.t">ENSA · TDI</h3>
+                <p data-i18n="about.h.ensa.p">Transformation digitale industrielle — ingénieur.</p>
               </article>
             </div>
 
@@ -112,55 +147,55 @@
     <section class="section section-alt" id="parcours">
       <div class="container">
         <header class="section-head reveal">
-          <span class="section-tag">Parcours</span>
-          <h2>Expérience &amp; formation</h2>
-          <p>Mon parcours professionnel, académique et certifications.</p>
+          <span class="section-tag" data-i18n="parcours.tag">Parcours</span>
+          <h2 data-i18n="parcours.h">Expérience &amp; formation</h2>
+          <p data-i18n="parcours.sub">Mon parcours professionnel, académique et certifications.</p>
         </header>
 
-        <h3 class="timeline-heading reveal">Expérience professionnelle</h3>
+        <h3 class="timeline-heading reveal" data-i18n="parcours.exp">Expérience professionnelle</h3>
         <ol class="timeline">
           <li class="timeline-item reveal">
-            <time datetime="2025-07">Juil. 2025 — Aujourd'hui</time>
-            <h3>Ingénieur IA &amp; Computer Vision · Marwa</h3>
-            <p class="timeline-meta">CDI · Casablanca</p>
-            <p>Pipelines CV temps réel (YOLO, détection, tracking, Re-ID multi-caméras). Agents IA LLM (RAG, STT/TTS). Optimisation d'inférence. Data engineering (Kafka, EMQX, MQTT).</p>
+            <time datetime="2025-07" data-i18n="parcours.e1.time">Juil. 2025 — Aujourd'hui</time>
+            <h3 data-i18n="parcours.e1.title">Ingénieur IA &amp; Computer Vision · Marwa</h3>
+            <p class="timeline-meta" data-i18n="parcours.e1.meta">CDI · Casablanca</p>
+            <p data-i18n="parcours.e1.desc">Pipelines CV temps réel (YOLO, détection, tracking, Re-ID multi-caméras). Agents IA LLM (RAG, STT/TTS). Optimisation d'inférence. Data engineering (Kafka, EMQX, MQTT).</p>
           </li>
           <li class="timeline-item reveal" style="--delay: 0.05s">
-            <time datetime="2025-02">Fév. 2025 · 6 mois</time>
-            <h3>Stage ingénieur Data Science · Luova</h3>
-            <p>Analyse de données, chatbot / agent IA, développement et déploiement de modèles ML, digitalisation d'un système de management.</p>
+            <time datetime="2025-02" data-i18n="parcours.e2.time">Fév. 2025 · 6 mois</time>
+            <h3 data-i18n="parcours.e2.title">Stage ingénieur Data Science · Luova</h3>
+            <p data-i18n="parcours.e2.desc">Analyse de données, chatbot / agent IA, développement et déploiement de modèles ML, digitalisation d'un système de management.</p>
           </li>
           <li class="timeline-item reveal" style="--delay: 0.1s">
-            <time datetime="2024-02">Fév. 2024 · 6 mois</time>
-            <h3>Ingénieur IA full stack · Mentis</h3>
+            <time datetime="2024-02" data-i18n="parcours.e3.time">Fév. 2024 · 6 mois</time>
+            <h3 data-i18n="parcours.e3.title">Ingénieur IA full stack · Mentis</h3>
             <p class="timeline-meta">Belgique</p>
-            <p>Système de détection de contenu textuel généré par LLM avec interface utilisateur — computer vision &amp; full stack.</p>
+            <p data-i18n="parcours.e3.desc">Système de détection de contenu textuel généré par LLM avec interface utilisateur — computer vision &amp; full stack.</p>
           </li>
           <li class="timeline-item reveal" style="--delay: 0.15s">
-            <time datetime="2023-07">Juil. 2023 · 2 mois</time>
-            <h3>Stage ingénieur · OCP</h3>
+            <time datetime="2023-07" data-i18n="parcours.e4.time">Juil. 2023 · 2 mois</time>
+            <h3 data-i18n="parcours.e4.title">Stage ingénieur · OCP</h3>
             <p class="timeline-meta">Khouribga</p>
-            <p>Agent SQL avec N8N et PostgreSQL (Odoo) sur serveur Oracle. Tableau de bord interactif pour capteurs IoT. Stack : Docker, OpenAI, N8N, Linux.</p>
+            <p data-i18n="parcours.e4.desc">Agent SQL avec N8N et PostgreSQL (Odoo) sur serveur Oracle. Tableau de bord interactif pour capteurs IoT. Stack : Docker, OpenAI, N8N, Linux.</p>
           </li>
           <li class="timeline-item reveal" style="--delay: 0.2s">
-            <time datetime="2022-07">Juil. 2022 · 2 mois</time>
-            <h3>Stage d'application · Cosumar</h3>
+            <time datetime="2022-07" data-i18n="parcours.e5.time">Juil. 2022 · 2 mois</time>
+            <h3 data-i18n="parcours.e5.title">Stage d'application · Cosumar</h3>
             <p class="timeline-meta">Ksar El Kébir</p>
-            <p>Application mobile Android pour digitaliser les processus d'inspection mécanique (Bureau Méthode).</p>
+            <p data-i18n="parcours.e5.desc">Application mobile Android pour digitaliser les processus d'inspection mécanique (Bureau Méthode).</p>
           </li>
         </ol>
 
-        <h3 class="timeline-heading reveal">Formation</h3>
+        <h3 class="timeline-heading reveal" data-i18n="parcours.edu">Formation</h3>
         <ol class="timeline timeline-education">
         <li class="timeline-item reveal">
           <time datetime="2019/2024">2019 — 2024</time>
-          <h3>ENSA · Ingénieur</h3>
-          <p class="timeline-meta">Transformation digitale industrielle (TDI)</p>
+          <h3 data-i18n="parcours.ed1.title">ENSA · Ingénieur</h3>
+          <p class="timeline-meta" data-i18n="parcours.ed1.meta">Transformation digitale industrielle (TDI)</p>
         </li>
       </ol>
 
       <div class="certs reveal" style="--delay: 0.1s">
-        <h3 class="certs-title">Certifications</h3>
+        <h3 class="certs-title" data-i18n="parcours.certs">Certifications</h3>
         <ul class="certs-list">
           <li>Professional Scrum Master I (PSM I) · Scrum.org</li>
           <li>Databases and SQL for Data Science with Python · IBM (Coursera)</li>
@@ -175,18 +210,18 @@
     <section class="section skills-section" id="skills">
       <div class="container">
         <header class="section-head section-head-center reveal">
-          <span class="section-tag">Compétences</span>
-          <h2>Stack &amp; domaines d'expertise</h2>
-          <p>Regroupées par ce que je conçois au quotidien : modèles IA, logiciel et industrialisation data.</p>
+          <span class="section-tag" data-i18n="skills.tag">Compétences</span>
+          <h2 data-i18n="skills.h">Stack &amp; domaines d'expertise</h2>
+          <p data-i18n="skills.sub">Regroupées par ce que je conçois au quotidien : modèles IA, logiciel et industrialisation data.</p>
         </header>
 
         <div class="skills-categories reveal">
           <article class="skill-category">
-            <h3>Intelligence artificielle</h3>
-            <p class="skill-category-desc">Modélisation, vision par ordinateur et applications LLM.</p>
+            <h3 data-i18n="skills.c1.t">Intelligence artificielle</h3>
+            <p class="skill-category-desc" data-i18n="skills.c1.d">Modélisation, vision par ordinateur et applications LLM.</p>
             <div class="skill-subgroups">
               <div class="skill-subgroup">
-                <h4>ML &amp; modèles</h4>
+                <h4 data-i18n="skills.c1.s1">ML &amp; modèles</h4>
                 <ul class="tags">
                   <li>Machine Learning</li>
                   <li>Data science</li>
@@ -195,7 +230,7 @@
                 </ul>
               </div>
               <div class="skill-subgroup">
-                <h4>Vision &amp; langage</h4>
+                <h4 data-i18n="skills.c1.s2">Vision &amp; langage</h4>
                 <ul class="tags">
                   <li>Computer Vision</li>
                   <li>YOLO · OpenCV</li>
@@ -208,11 +243,11 @@
           </article>
 
           <article class="skill-category">
-            <h3>Développement &amp; déploiement</h3>
-            <p class="skill-category-desc">Implémentation, APIs et mise en production.</p>
+            <h3 data-i18n="skills.c2.t">Développement &amp; déploiement</h3>
+            <p class="skill-category-desc" data-i18n="skills.c2.d">Implémentation, APIs et mise en production.</p>
             <div class="skill-subgroups">
               <div class="skill-subgroup">
-                <h4>Langages</h4>
+                <h4 data-i18n="skills.c2.s1">Langages</h4>
                 <ul class="tags">
                   <li>Python</li>
                   <li>Java</li>
@@ -222,7 +257,7 @@
                 </ul>
               </div>
               <div class="skill-subgroup">
-                <h4>Outils &amp; stacks</h4>
+                <h4 data-i18n="skills.c2.s2">Outils &amp; stacks</h4>
                 <ul class="tags">
                   <li>FastAPI</li>
                   <li>Git</li>
@@ -236,27 +271,27 @@
           </article>
 
           <article class="skill-category">
-            <h3>Data, infra &amp; méthodes</h3>
-            <p class="skill-category-desc">Flux temps réel, BI et travail en équipe agile.</p>
+            <h3 data-i18n="skills.c3.t">Data, infra &amp; méthodes</h3>
+            <p class="skill-category-desc" data-i18n="skills.c3.d">Flux temps réel, BI et travail en équipe agile.</p>
             <div class="skill-subgroups">
               <div class="skill-subgroup">
-                <h4>Pipelines &amp; données</h4>
+                <h4 data-i18n="skills.c3.s1">Pipelines &amp; données</h4>
                 <ul class="tags">
                   <li>Kafka</li>
                   <li>MQTT / EMQX</li>
                   <li>IoT</li>
                   <li>PostgreSQL</li>
                   <li>N8N</li>
-                  <li>Bases de données</li>
+                  <li data-i18n="skills.tag.db">Bases de données</li>
                 </ul>
               </div>
               <div class="skill-subgroup">
-                <h4>BI &amp; organisation</h4>
+                <h4 data-i18n="skills.c3.s2">BI &amp; organisation</h4>
                 <ul class="tags">
                   <li>Power BI</li>
                   <li>Tableau</li>
                   <li>Scrum / Agile</li>
-                  <li>Management de projet</li>
+                  <li data-i18n="skills.tag.pm">Management de projet</li>
                 </ul>
               </div>
             </div>
@@ -268,9 +303,9 @@
     <section class="section projects-section" id="projects">
       <div class="container">
         <header class="section-head section-head-center reveal">
-          <span class="section-tag">Projets</span>
-          <h2>Ce que j'ai construit</h2>
-          <p>Solutions IA, data et logiciel livrées en entreprise et en stage.</p>
+          <span class="section-tag" data-i18n="projects.tag">Projets</span>
+          <h2 data-i18n="projects.h">Ce que j'ai construit</h2>
+          <p data-i18n="projects.sub">Solutions IA, data et logiciel livrées en entreprise et en stage.</p>
         </header>
 
         <div class="projects-grid">
@@ -279,23 +314,23 @@
               <span class="project-tag">Computer Vision</span>
               <span class="project-company">Marwa</span>
             </div>
-            <h3>Pipelines temps réel multi-caméras</h3>
-            <p>YOLO, détection, tracking et Re-ID pour la surveillance industrielle. Optimisation d'inférence et flux data (Kafka, MQTT).</p>
+            <h3 data-i18n="projects.p1.t">Pipelines temps réel multi-caméras</h3>
+            <p data-i18n="projects.p1.d">YOLO, détection, tracking et Re-ID pour la surveillance industrielle. Optimisation d'inférence et flux data (Kafka, MQTT).</p>
             <ul class="project-tags">
               <li>YOLO</li>
               <li>OpenCV</li>
               <li>Kafka</li>
-              <li>Temps réel</li>
+              <li data-i18n="projects.p1.tag">Temps réel</li>
             </ul>
           </article>
 
           <article class="project-card reveal" style="--delay: 0.05s">
             <div class="project-card-header">
               <span class="project-tag">NLP · ML</span>
-              <span class="project-company">Projet IA</span>
+              <span class="project-company" data-i18n="projects.p2.co">Projet IA</span>
             </div>
-            <h3>Détection de fraude administrative</h3>
-            <p>Analyse automatique des dossiers pour repérer les anomalies et prioriser les investigations.</p>
+            <h3 data-i18n="projects.p2.t">Détection de fraude administrative</h3>
+            <p data-i18n="projects.p2.d">Analyse automatique des dossiers pour repérer les anomalies et prioriser les investigations.</p>
             <ul class="project-tags">
               <li>Python</li>
               <li>NLP</li>
@@ -307,10 +342,10 @@
           <article class="project-card reveal" style="--delay: 0.1s">
             <div class="project-card-header">
               <span class="project-tag">Agent IA</span>
-              <span class="project-company">Projet IA</span>
+              <span class="project-company" data-i18n="projects.p2.co">Projet IA</span>
             </div>
-            <h3>Agent SQL · Odoo &amp; N8N</h3>
-            <p>Agent conversationnel SQL sur PostgreSQL Odoo, orchestré avec N8N sur infrastructure Oracle.</p>
+            <h3 data-i18n="projects.p3.t">Agent SQL · Odoo &amp; N8N</h3>
+            <p data-i18n="projects.p3.d">Agent conversationnel SQL sur PostgreSQL Odoo, orchestré avec N8N sur infrastructure Oracle.</p>
             <ul class="project-tags">
               <li>Docker</li>
               <li>OpenAI</li>
@@ -324,8 +359,8 @@
               <span class="project-tag">LLM</span>
               <span class="project-company">Mentis</span>
             </div>
-            <h3>Détection de texte généré par LLM</h3>
-            <p>Système de classification de contenu produit par grand modèle de langage, avec interface utilisateur.</p>
+            <h3 data-i18n="projects.p4.t">Détection de texte généré par LLM</h3>
+            <p data-i18n="projects.p4.d">Système de classification de contenu produit par grand modèle de langage, avec interface utilisateur.</p>
             <ul class="project-tags">
               <li>LLM</li>
               <li>Full stack</li>
@@ -338,12 +373,12 @@
               <span class="project-tag">IoT · BI</span>
               <span class="project-company">OCP</span>
             </div>
-            <h3>Tableau de bord capteurs</h3>
-            <p>Visualisation interactive des données capteurs pour le suivi de l'état des machines.</p>
+            <h3 data-i18n="projects.p5.t">Tableau de bord capteurs</h3>
+            <p data-i18n="projects.p5.d">Visualisation interactive des données capteurs pour le suivi de l'état des machines.</p>
             <ul class="project-tags">
               <li>IoT</li>
               <li>Dashboard</li>
-              <li>Industrie</li>
+              <li data-i18n="projects.p5.tag">Industrie</li>
             </ul>
           </article>
 
@@ -352,18 +387,18 @@
               <span class="project-tag">Mobile</span>
               <span class="project-company">Cosumar</span>
             </div>
-            <h3>App inspection mécanique</h3>
-            <p>Application Android pour digitaliser les processus d'inspection au Bureau Méthode.</p>
+            <h3 data-i18n="projects.p6.t">App inspection mécanique</h3>
+            <p data-i18n="projects.p6.d">Application Android pour digitaliser les processus d'inspection au Bureau Méthode.</p>
             <ul class="project-tags">
               <li>Android</li>
-              <li>Industrie</li>
+              <li data-i18n="projects.p5.tag">Industrie</li>
             </ul>
           </article>
         </div>
 
         <div class="projects-cta reveal">
-          <p>Plus de code et d'expérimentations sur GitHub.</p>
-          <a class="btn btn-primary" href="https://github.com/TEMSAMANI-Sohaib" target="_blank" rel="noopener">Voir mon GitHub</a>
+          <p data-i18n="projects.cta">Plus de code et d'expérimentations sur GitHub.</p>
+          <a class="btn btn-primary" href="https://github.com/TEMSAMANI-Sohaib" target="_blank" rel="noopener" data-i18n="projects.github">Voir mon GitHub</a>
         </div>
       </div>
     </section>
@@ -371,33 +406,31 @@
     <section class="section contact-section" id="contact">
       <div class="container">
         <header class="section-head section-head-center reveal">
-          <span class="section-tag">Contact</span>
-          <h2>Travaillons ensemble</h2>
-          <p>Un projet IA, une opportunité professionnelle ou un simple échange.</p>
+          <span class="section-tag" data-i18n="contact.tag">Contact</span>
+          <h2 data-i18n="contact.h">Travaillons ensemble</h2>
+          <p data-i18n="contact.sub">Un projet IA, une opportunité professionnelle ou un simple échange.</p>
         </header>
 
         <div class="contact-layout">
           <div class="contact-intro reveal">
             <span class="contact-status">
               <span class="status-dot" aria-hidden="true"></span>
-              Ouvert aux collaborations
+              <span data-i18n="contact.status">Ouvert aux collaborations</span>
             </span>
-            <h3 class="contact-intro-title">Parlons de votre prochain projet</h3>
-            <p class="contact-intro-text">
+            <h3 class="contact-intro-title" data-i18n="contact.intro.t">Parlons de votre prochain projet</h3>
+            <p class="contact-intro-text" data-i18n-html="contact.intro.p">
               Ingénieur IA basé à <strong>Casablanca</strong>. Contactez-moi par email ou LinkedIn
               pour discuter de computer vision, agents IA ou data science.
             </p>
             <div class="contact-cta">
-              <a class="btn btn-primary" href="mailto:Sohaib.Temsa@gmail.com?subject=Contact%20portfolio%20—%20Sohaib%20Temsamani">
-                Envoyer un email
-              </a>
-              <a class="btn btn-ghost" href="cv/CV_TEMSAMANI_Sohaib.pdf" download>Télécharger mon CV</a>
+              <a class="btn btn-primary" href="mailto:Sohaib.Temsa@gmail.com?subject=Contact%20portfolio%20—%20Sohaib%20Temsamani" data-i18n-mail data-i18n="contact.email">Envoyer un email</a>
+              <a class="btn btn-ghost" href="cv/CV_TEMSAMANI_Sohaib.pdf" download data-i18n="contact.cv">Télécharger mon CV</a>
             </div>
             <div class="contact-location-card">
               <span class="contact-location-icon" aria-hidden="true">📍</span>
               <div>
-                <p class="contact-location-label">Localisation</p>
-                <p class="contact-location-value">Casablanca, Casablanca-Settat · Maroc</p>
+                <p class="contact-location-label" data-i18n="contact.loc.label">Localisation</p>
+                <p class="contact-location-value" data-i18n="contact.loc.value">Casablanca, Casablanca-Settat · Maroc</p>
               </div>
             </div>
           </div>
@@ -414,7 +447,7 @@
             <a class="contact-method" href="tel:+212708185615">
               <span class="contact-method-icon" aria-hidden="true">☎</span>
               <span class="contact-method-body">
-                <span class="contact-method-label">Téléphone</span>
+                <span class="contact-method-label" data-i18n="contact.phone">Téléphone</span>
                 <span class="contact-method-value">07 08 18 56 15</span>
               </span>
               <span class="contact-method-arrow" aria-hidden="true">→</span>
@@ -438,8 +471,8 @@
             <a class="contact-method" href="cv/CV_TEMSAMANI_Sohaib.pdf" download>
               <span class="contact-method-icon" aria-hidden="true">CV</span>
               <span class="contact-method-body">
-                <span class="contact-method-label">Curriculum vitae</span>
-                <span class="contact-method-value">PDF · Téléchargement direct</span>
+                <span class="contact-method-label" data-i18n="contact.cv.label">Curriculum vitae</span>
+                <span class="contact-method-value" data-i18n="contact.cv.value">PDF · Téléchargement direct</span>
               </span>
               <span class="contact-method-arrow" aria-hidden="true">↓</span>
             </a>
@@ -451,11 +484,13 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> Sohaib Temsamani · Casablanca, Maroc</p>
-      <a href="#home" class="back-top">Haut de page ↑</a>
+      <p data-i18n-html="footer.copy">© <span id="year"></span> Sohaib Temsamani · Casablanca, Maroc</p>
+      <a href="#home" class="back-top" data-i18n="footer.top">Haut de page ↑</a>
     </div>
   </footer>
 
+  <script src="js/theme.js" defer></script>
+  <script src="js/i18n.js" defer></script>
   <script src="js/portfolio.js" defer></script>
 </body>
 </html>
