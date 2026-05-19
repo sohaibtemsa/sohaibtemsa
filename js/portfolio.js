@@ -44,6 +44,19 @@
   window.addEventListener("scroll", setActiveNav, { passive: true });
   setActiveNav();
 
+  var backTop = document.querySelector(".back-top");
+  if (backTop) {
+    backTop.addEventListener("click", function (e) {
+      e.preventDefault();
+      var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+      if (history.replaceState) {
+        history.replaceState(null, "", "#home");
+      }
+      setActiveNav();
+    });
+  }
+
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && reveals.length) {
     var observer = new IntersectionObserver(
