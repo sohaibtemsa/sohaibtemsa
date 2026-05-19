@@ -406,10 +406,6 @@ a:hover {
   font-weight: 700;
 }
 
-.hero-status-highlight {
-  color: var(--accent-light);
-}
-
 .accent {
   color: var(--accent);
 }
@@ -462,28 +458,6 @@ a:hover {
 .btn-ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
-}
-
-.hero-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-.hero-meta li::before {
-  content: "·";
-  margin-right: 0.5rem;
-  color: var(--accent);
-}
-
-.hero-meta li:first-child::before {
-  content: none;
-  margin: 0;
 }
 
 .hero-frame {
