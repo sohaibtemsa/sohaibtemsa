@@ -267,20 +267,21 @@ a:hover {
   border-radius: 10px;
   overflow: hidden;
   line-height: 0;
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.35);
+  transition: transform 0.15s, box-shadow 0.2s;
 }
 
 .logo img {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.35rem;
+  height: 2.35rem;
   object-fit: cover;
-  border-radius: 10px;
+  display: block;
 }
 
 .logo:hover {
   text-decoration: none;
-  transform: scale(1.05);
-  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px var(--accent), 0 8px 20px var(--accent-glow);
 }
 
 .nav-links {
