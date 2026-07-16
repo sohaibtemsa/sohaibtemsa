@@ -272,8 +272,8 @@ a:hover {
 }
 
 .logo img {
-  width: 2.35rem;
-  height: 2.35rem;
+  width: 2rem;
+  height: 2rem;
   object-fit: cover;
   display: block;
 }
