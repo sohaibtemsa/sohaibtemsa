@@ -259,20 +259,28 @@ a:hover {
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 1.1rem;
-  letter-spacing: 0.04em;
-  color: var(--on-accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   text-decoration: none;
-  padding: 0.35rem 0.65rem;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
-  border: none;
-  border-radius: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+  line-height: 0;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.logo img {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .logo:hover {
-  filter: brightness(1.08);
   text-decoration: none;
+  transform: scale(1.05);
+  box-shadow: 0 0 16px var(--accent-glow);
 }
 
 .nav-links {
