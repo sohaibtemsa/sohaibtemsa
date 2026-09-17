@@ -1,16 +1,30 @@
-# Sohaib Temsamani — Portfolio
+# Sohaib Temsamani — portfolio
 
-Portfolio de **TEMSAMANI Sohaib** — Ingénieur IA, Computer Vision.
+Personal site of Sohaib Temsamani, AI & computer-vision engineer: https://sohaibtemsa.com
 
-**Live:** [sohaibtemsa.github.io/sohaibtemsa](https://sohaibtemsa.github.io/sohaibtemsa/)
+Static HTML + CSS + a small vanilla JS file, no build step. Everything works without JavaScript.
 
-**CV local :** `cv/CV_TEMSAMANI_Sohaib.pdf`
+| Path | What |
+|---|---|
+| `index.html` | French page (default) |
+| `en/index.html` | English page |
+| `css/site.css` | The only stylesheet (tokens, dark bands, motion) |
+| `js/site.js` | Progressive enhancement: scroll reveals, glass section edge, projects intro fade, active project, experience rail, active nav, clock, copy e-mail |
+| `assets/icons.svg` | Phosphor icon sprite (MIT, licence alongside) |
+| `assets/fonts/` | Archivo (text) and Martian Mono (numbers, dates, code), variable, subset to Latin, OFL licences alongside |
+| `assets/img/` | Portrait and ST logo (WebP), link-preview images `og-fr.jpg` / `og-en.jpg` |
+| `cv/CV_TEMSAMANI_Sohaib.pdf` | The CV (keep this path: it is linked from outside) |
 
-## Run locally
+Both pages carry the same content; edit them together.
 
-```powershell
-cd C:\Users\sohai\Desktop\portfolio
-npx serve .
+## Preview locally (macOS)
+
+```bash
+python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open the URL shown (e.g. `http://localhost:3000`), or use **Live Server** in Cursor on `index.html`.
+Then open http://127.0.0.1:8000 (French) and http://127.0.0.1:8000/en/ (English).
+
+## Deploy
+
+GitHub Pages publishes the `main` branch to `sohaibtemsa.com` (`CNAME`). Pushing `main` is a release.
